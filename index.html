@@ -1,1 +1,272 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>برای مهدی من ❤️</title>
 
+<style>
+*{box-sizing:border-box}
+:root{--pink:#ff6b9d;--gold:#f7d99b;--bg:#09070d}
+body{
+ margin:0;background:var(--bg);color:#fff0f5;
+ font-family:Tahoma,Arial,sans-serif;text-align:center;
+}
+.page{
+ min-height:100vh;display:flex;flex-direction:column;
+ align-items:center;justify-content:center;padding:28px 18px;
+ position:relative;overflow:hidden;
+ background:radial-gradient(ellipse at 50% 42%,#48182f 0%,#1a0b18 44%,#09070d 78%);
+ animation:appear .8s ease both;
+}
+.hidden{display:none!important}
+h1{
+ font-size:clamp(27px,7vw,46px);color:#ffc1d6;
+ text-shadow:0 0 30px #ff3e83a0;margin:22px 0;
+}
+p{line-height:2.2}
+.sub{color:#e4b4c8;font-size:14px}
+button{
+ font-family:inherit;font-size:15px;color:white;
+ background:linear-gradient(120deg,#b52259,#64152f);
+ border:1px solid #f68db1;border-radius:30px;
+ padding:14px 22px;margin:8px;cursor:pointer;
+ transition:transform .25s,box-shadow .25s;
+ box-shadow:0 5px 25px #e52e681c;
+}
+button:hover{transform:translateY(-3px);box-shadow:0 0 25px #ff4d8b77}
+button:active{transform:scale(.97)}
+.eyes{display:flex;gap:18px;direction:ltr;margin:28px 0}
+.eye{
+ width:clamp(125px,35vw,175px);height:clamp(70px,21vw,100px);
+ background:#fff4ed;border:3px solid #e7bdb5;
+ border-radius:50%;position:relative;overflow:hidden;
+ box-shadow:0 0 25px #ffc2cc4a;
+ animation:blink 5s infinite;
+}
+.eye:nth-child(2){animation-delay:.2s}
+.iris{
+ position:absolute;width:46%;height:77%;left:27%;top:12%;
+ border-radius:50%;
+ background:radial-gradient(circle at 35% 25%,#ffe5a6 0 5%,#d39a51 17%,#8d512d 40%,#492619 65%,#100b09 74%);
+ box-shadow:inset 0 0 10px #1b0800;
+ transition:transform .09s;
+}
+.iris:before{
+ content:"";position:absolute;inset:27% 31%;
+ border-radius:50%;background:#080608;
+}
+.iris:after{
+ content:"";position:absolute;left:22%;top:17%;
+ width:18%;height:18%;border-radius:50%;background:white;
+ box-shadow:13px 10px 0 -3px #fff4d7;
+}
+.lid{
+ position:absolute;z-index:2;left:0;right:0;top:0;height:17%;
+ background:#28121c;border-radius:50% 50% 0 0;
+}
+@keyframes blink{
+ 0%,43%,47%,96%,100%{transform:scaleY(1)}
+ 45%,98%{transform:scaleY(.12)}
+}
+.glow{
+ position:absolute;width:250px;height:250px;border-radius:50%;
+ background:#ff276b12;filter:blur(25px);pointer-events:none;
+}
+.heart{
+ font-size:clamp(95px,25vw,145px);
+ filter:drop-shadow(0 0 25px #ff3479);
+ animation:beat 1s infinite;
+}
+@keyframes beat{
+ 0%,100%{transform:scale(1)}
+ 15%,45%{transform:scale(1.13)}
+ 30%,60%{transform:scale(1)}
+}
+.panel{
+ width:min(100%,530px);padding:18px;margin:10px 0;
+ background:#ffffff08;border:1px solid #b64c704f;
+ border-radius:20px;box-shadow:0 8px 30px #0002;
+}
+.message{color:#ffe2ed;line-height:2.2;padding:8px}
+.paper{
+ width:min(100%,570px);padding:26px 22px;
+ background:linear-gradient(145deg,#fff2f5,#f7dce5);
+ color:#54182f;border-radius:8px 8px 20px 20px;
+ line-height:2.4;box-shadow:0 0 40px #ff61904d;
+}
+.paper h2{color:#a21d4f}
+.paper .signature{color:#a21d4f;font-weight:bold}
+.star{
+ position:fixed;z-index:10;bottom:-25px;pointer-events:none;
+ animation:float 6s linear forwards;
+}
+@keyframes float{
+ to{transform:translateY(-110vh) rotate(300deg);opacity:0}
+}
+@keyframes appear{
+ from{opacity:0;transform:translateY(10px)}
+ to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+<body>
+
+<section class="page" id="intro">
+ <div class="glow"></div>
+ <p class="sub">یه سورپرایز کوچولو برای یه آدم خاص...</p>
+
+ <div class="eyes">
+  <div class="eye"><div class="iris"></div><div class="lid"></div></div>
+  <div class="eye"><div class="iris"></div><div class="lid"></div></div>
+ </div>
+
+ <h1>مهدی، نگام می‌کنی؟ 👀</h1>
+ <p>یه نفر پشت این صفحه منتظرته... ❤️</p>
+ <button onclick="openHeart()">وارد دنیای کوچیکم شو ✨</button>
+ <p class="sub">با موس یا انگشتت حرکت کن</p>
+</section>
+<section class="page hidden" id="heartPage">
+ <div class="heart">❤️</div>
+ <h1>Mahdi <span style="color:#ff739f">♥</span> Zahra</h1>
+ <p>
+  روز پسر مبارک، آقای خاص من!<br>
+  این صفحه رو فقط برای تو ساختم. 🥹
+ </p>
+ <button onclick="showPage('messages')">یه عالمه حرف دارم... 💌</button>
+</section>
+
+<section class="page hidden" id="messages">
+ <h1>چهار تا حرف از زهرا 💗</h1>
+ <p class="sub">هر کدوم رو باز کن تا پیامش رو بخونی</p>
+
+ <div class="panel">
+  <button onclick="toggle('msg1')">حرف اول؛ یه اعتراف کوچولو</button>
+  <p class="message hidden" id="msg1">
+   بعضی وقتا شاید نتونم حسم رو درست بیان کنم،
+   اما بعضی آدم‌ها با یه پیام ساده می‌تونن روز آدم رو قشنگ‌تر کنن.
+   تو هم یکی از همون آدم‌هایی. ❤️
+  </p>
+ </div>
+
+ <div class="panel">
+  <button onclick="toggle('msg2')">حرف دوم؛ لبخند من</button>
+  <p class="message hidden" id="msg2">
+   می‌دونی چی قشنگه؟ اینکه وسط یه روز معمولی،
+   یه اسم توی ذهنت بیاد و بی‌اختیار لبخند بزنی.
+   گاهی اسم تو همین حس رو برای من میاره. 🫶🏻
+  </p>
+ </div>
+
+ <div class="panel">
+  <button onclick="toggle('msg3')">حرف سوم؛ آرزوم برات</button>
+  <p class="message hidden" id="msg3">
+   آرزو می‌کنم همیشه سلامت باشی، به خواسته‌هات برسی،
+   دلت آروم باشه و هر روز یه دلیل تازه برای خندیدن پیدا کنی.
+   روزت مبارک مهدی جان! ✨
+  </p>
+ </div>
+
+ <div class="panel">
+  <button onclick="toggle('msg4')">حرف چهارم؛ تک برف من ❄️</button>
+  <p class="message hidden" id="msg4">
+   بین هزاران دونه برف، بعضی‌ها یه جور دیگه به دل می‌شینن...
+   تو هم برای من یه آدم متفاوتی؛
+   یه تک برف کوچولو وسط دنیای شلوغ من. ❄️🤍
+  </p>
+ </div>
+
+ <button onclick="showPage('letter')">آخرین پاکت رو باز کن 💌</button>
+</section>
+
+<section class="page hidden" id="letter">
+ <div class="paper">
+  <div style="font-size:35px">💌</div>
+  <h2>برای مهدی، از ته دل...</h2>
+  <p>
+   مهدی جان،<br>
+   روز پسر مبارک! ❤️<br><br>
+   شاید این فقط یه صفحه توی مرورگر باشه،
+   ولی برای من یه بهونه‌ست تا یه لبخند بهت هدیه بدم.<br><br>
+   ممنون برای توجهت، برای لحظه‌های قشنگ
+   و برای مهربونی‌هایی که نشونم می‌دی.
+   امیدوارم همیشه حال دلت خوب باشه و زندگی
+   کلی اتفاق قشنگ برات کنار گذاشته باشه.<br><br>
+   این سورپرایز کوچولو تموم شد،
+   اما امیدوارم لبخندش بیشتر بمونه. 🥹❤️
+  </p>
+  <p class="signature">از طرف زهرا، برای مهدی من ❄️</p>
+  <button onclick="restart()">دوباره از اول ببینیم؟ 💞</button>
+ </div>
+</section>
+
+<script>
+function showPage(id){
+ document.querySelectorAll(".page").forEach(function(page){
+  page.classList.add("hidden");
+ });
+ const next=document.getElementById(id);
+ next.classList.remove("hidden");
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function openHeart(){
+ showPage("heartPage");
+}
+
+function toggle(id){
+ const el=document.getElementById(id);
+ el.classList.toggle("hidden");
+}
+
+function restart(){
+ document.querySelectorAll(".page").forEach(function(page){
+  page.classList.add("hidden");
+ });
+ document.getElementById("intro").classList.remove("hidden");
+ document.querySelectorAll(".message").forEach(function(message){
+  message.classList.add("hidden");
+ });
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function moveEyes(x,y){
+ document.querySelectorAll(".eye").forEach(function(eye){
+  const iris=eye.querySelector(".iris");
+  const r=eye.getBoundingClientRect();
+  const dx=x-(r.left+r.width/2);
+  const dy=y-(r.top+r.height/2);
+  const angle=Math.atan2(dy,dx);
+  const distance=Math.min(Math.hypot(dx,dy)/28,7);
+  const mx=Math.cos(angle)*distance;
+  const my=Math.sin(angle)*distance;
+  iris.style.transform="translate("+mx+"px,"+my+"px)";
+ });
+}
+
+document.addEventListener("mousemove",function(e){
+ moveEyes(e.clientX,e.clientY);
+});
+
+document.addEventListener("touchmove",function(e){
+ if(e.touches.length){
+  moveEyes(e.touches[0].clientX,e.touches[0].clientY);
+ }
+},{passive:true});
+
+function makeStar(){
+ const star=document.createElement("span");
+
+star.className="star";
+ star.textContent=Math.random()>.5?"✦":"♡";
+ star.style.left=Math.random()*100+"vw";
+ star.style.color=Math.random()>.5?"#ff9ec2":"#f7d99b";
+ star.style.fontSize=(10+Math.random()*15)+"px";
+ document.body.appendChild(star);
+ setTimeout(function(){star.remove()},6100);
+}
+
+setInterval(makeStar,650);
+</script>
+</body>
+</html>
